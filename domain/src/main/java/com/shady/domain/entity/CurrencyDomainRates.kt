@@ -1,6 +1,6 @@
 package com.shady.domain.entity
 
-data class Rates(
+data class CurrencyDomainRates(
     val AED: Double,
     val AFN: Double,
     val ALL: Double,
@@ -169,5 +169,5 @@ data class Rates(
     val YER: Double,
     val ZAR: Double,
     val ZMW: Double,
-    val ZWL: Int
+    val ZWL: Int,
 )

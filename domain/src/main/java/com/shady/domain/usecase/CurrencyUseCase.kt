@@ -1,7 +1,7 @@
 package com.shady.domain.usecase
 
-import com.shady.domain.entity.CurrencyResponse
+import com.shady.domain.entity.CurrencyDomainModel
 
 interface CurrencyUseCase {
-    suspend operator fun invoke(): CurrencyResponse?
+    suspend operator fun invoke(): CurrencyDomainModel?
 }
