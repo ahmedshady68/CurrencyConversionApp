@@ -25,7 +25,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://openexchangerates.org/api/latest.json?")
+            .baseUrl("https://openexchangerates.org/api/")
             .client(okHttpClient).addConverterFactory(GsonConverterFactory.create()).build()
     }
 
