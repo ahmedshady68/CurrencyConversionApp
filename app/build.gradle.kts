@@ -84,12 +84,6 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.8")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0-RC")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
-    // View Pager
-    implementation("com.google.accompanist:accompanist-pager:0.30.1")
-    // Exo Player
-    implementation("androidx.media3:media3-exoplayer:1.2.1")
-    implementation("androidx.media3:media3-exoplayer-dash:1.2.1")
-    implementation("androidx.media3:media3-ui:1.2.1")
     // lottie Compose
     implementation("com.airbnb.android:lottie-compose:6.0.1")
     // debugImplementation because LeakCanary should only run in debug builds.

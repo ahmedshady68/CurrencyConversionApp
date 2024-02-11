@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CurrencyConversionApp</string>
+    <string name="retry_button_text">RETRY</string>
+    <string name="retry_title_text">something went wrong..</string>
+    <string name="retry_description_text">Our site is down for maintenance. Please check back later.</string>
+    <string name="currency_screen_title">Currency Conversion</string>
 </resources>

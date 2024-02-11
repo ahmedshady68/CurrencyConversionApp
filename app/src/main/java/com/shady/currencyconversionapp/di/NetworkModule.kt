@@ -1,5 +1,8 @@
 package com.shady.currencyconversionapp.di
 
+import com.google.gson.GsonBuilder
+import com.shady.currencyconversionapp.presentation.mapper.CurrencyDeserializer
+import com.shady.data.model.CurrencyDataModel
 import com.shady.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
@@ -26,7 +29,13 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://openexchangerates.org/api/")
-            .client(okHttpClient).addConverterFactory(GsonConverterFactory.create()).build()
+            .client(okHttpClient).addConverterFactory(
+                GsonConverterFactory.create(
+                    GsonBuilder()
+                        .registerTypeAdapter(CurrencyDataModel::class.java, CurrencyDeserializer())
+                        .create()
+                )
+            ).build()
     }
 
     @Provides

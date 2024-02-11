@@ -16,6 +16,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.shady.currencyconversionapp.presentation.model.CurrencyIntent
+import com.shady.currencyconversionapp.presentation.ui.screen.CurrencyApp
 import com.shady.currencyconversionapp.presentation.viewmodel.CurrencyViewModel
 import com.shady.currencyconversionapp.ui.theme.CurrencyConversionAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,11 +36,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting(currencyViewModel.currency.collectAsState().value.toString())
+                    CurrencyApp(
+                        currencyList = currencyViewModel.currency.collectAsState().value,
+                        retryOnClick = ::sendIntent
+                    )
                 }
             }
         }
     }
+
     private fun sendIntent() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
