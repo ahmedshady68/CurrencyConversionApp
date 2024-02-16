@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sendIntent()
+        sendInitialIntent()
         setContent {
             CurrencyConversionAppTheme {
                 Surface(
@@ -34,26 +34,31 @@ class MainActivity : ComponentActivity() {
                 ) {
                     CurrencyApp(
                         currencyList = currencyViewModel.currencyRates.collectAsState().value,
-                        retryOnClick = ::sendIntent,
-                        calculateOnClick = ::calculateCurrency
+                        retryOnClick = ::sendInitialIntent,
+                        calculateOnClick = ::sendCalculateCurrencyIntent
                     )
                 }
             }
         }
     }
 
-    private fun sendIntent() {
+    private fun sendInitialIntent() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                currencyViewModel.intentChannel.send(CurrencyIntent.GetCurrency)
+                currencyViewModel.intentChannel.send(CurrencyIntent.GetInitialCurrencyRates)
             }
         }
     }
 
-    private fun calculateCurrency(rate: Float, currentValue: String) {
+    private fun sendCalculateCurrencyIntent(rate: Float, currentValue: String) {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                currencyViewModel.intentChannel.send(CurrencyIntent.Calculate(rate, currentValue))
+                currencyViewModel.intentChannel.send(
+                    CurrencyIntent.CalculateCurrencyRate(
+                        rate,
+                        currentValue
+                    )
+                )
             }
         }
     }
