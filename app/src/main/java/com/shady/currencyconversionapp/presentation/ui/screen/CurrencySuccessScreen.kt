@@ -10,13 +10,13 @@ import com.shady.currencyconversionapp.presentation.ui.component.AppBarCurrency
 import com.shady.currencyconversionapp.presentation.ui.component.CurrencyList
 
 @Composable
-fun CurrencySuccessScreen(state: CurrencyViewState?) {
+fun CurrencySuccessScreen(state: CurrencyViewState?, calculateOnClick: (Float, String) -> Unit) {
     state?.currencyAppModel?.let {
         Scaffold(topBar = {
             AppBarCurrency()
         }) { innerPadding ->
             Box(modifier = Modifier.padding(innerPadding)) {
-                CurrencyList(state = state)
+                CurrencyList(state = state, calculateOnClick)
             }
         }
     }

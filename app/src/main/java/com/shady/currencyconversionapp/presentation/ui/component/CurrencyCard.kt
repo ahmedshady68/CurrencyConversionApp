@@ -20,7 +20,9 @@ import com.shady.domain.entity.Rate
 
 
 @Composable
-fun CurrencyCard(rate: Rate) {
+fun CurrencyCard(
+    rate: Rate,
+) {
     Surface(color = MaterialTheme.colorScheme.surface) {
         Column(
             modifier = Modifier.fillMaxWidth()
